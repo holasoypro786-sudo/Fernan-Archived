@@ -2,68 +2,49 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width">
 <title>FERNAN ARCHIVED</title>
 <style>
-body{background:#000;color:#555;font-family:monospace;text-align:center;padding:0;margin:0}
+body{background:#000;color:#444;font-family:monospace;text-align:center;margin:0}
 #entrada{
   position:fixed;inset:0;background:#000;z-index:9999;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  display:flex;align-items:center;justify-content:center;flex-direction:column
 }
 #entrada button{
-  background:#0a0a0a;border:1px solid #444;color:#888;padding:20px 50px;
-  letter-spacing:6px;font-family:monospace;cursor:pointer;font-size:16px
+  padding:25px 60px;background:#111;border:1px solid #444;color:#aaa;
+  letter-spacing:6px;font-size:18px;
 }
-#entrada button:active{background:#200;color:red}
-h1{font-size:32px;letter-spacing:10px;color:#111;margin-top:30px}
-#perro{width:300px;margin-top:20px;filter:contrast(130%) grayscale(30%);border:1px solid #151515}
-.botones{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:340px;margin:25px auto}
-.botones a{border:1px solid #1c1c1c;padding:14px;text-decoration:none;color:#3a3a3a;font-size:11px;background:#050505}
+#perro{width:300px;margin-top:20px;border:1px solid #222}
+.botones{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:320px;margin:20px auto}
+.botones a{border:1px solid #222;padding:12px;color:#444;text-decoration:none;background:#050505;font-size:11px}
 </style>
 </head>
 <body>
 
 <div id="entrada">
-  <p style="font-size:10px;color:#333;margin-bottom:20px;letter-spacing:3px">archivo dañado - se requiere audio</p>
-  <button id="btnEntrar">▶ ENTRAR</button>
-  <p style="font-size:8px;color:#222;margin-top:15px">[ usa audifonos ]</p>
-  <p id="error" style="font-size:9px;color:#400;margin-top:10px"></p>
+  <button onclick="entrar()">▶ ENTRAR</button>
+  <p style="font-size:9px;color:#222;margin-top:10px">usa audifonos</p>
 </div>
 
-<h1>FERNAN<br>ARCHIVED</h1>
-<p style="font-size:9px;letter-spacing:4px;color:#333">archivo perdido 2014-2017</p>
-
+<h1 style="margin-top:30px;letter-spacing:8px;color:#111">FERNAN ARCHIVED</h1>
 <img id="perro" src="Picsart_26-08-29_02-19-48-538.jpg">
 
 <div class="botones">
-  <a href="pasillo.html">□ PASILLO</a>
-  <a href="????.html">□ ???</a>
-  <a href="cuarto1.html">□ CUARTO 1</a>
-  <a href="cuarto2.html">□ CUARTO 2</a>
+  <a href="pasillo.html">PAS ILLO</a>
+  <a href="cuarto1.html">CUARTO 1</a>
 </div>
 
-<audio id="musica" loop preload="auto" src="https://cdn.pixabay.com/download/audio/2022/10/30/audio_8b64d9387a.mp3"></audio>
+<audio id="musica" loop src="https://cdn.pixabay.com/download/audio/2022/10/30/audio_8b64d9387a.mp3"></audio>
 
 <script>
-const musica = document.getElementById('musica');
-const entrada = document.getElementById('entrada');
-const btn = document.getElementById('btnEntrar');
-const error = document.getElementById('error');
-
-musica.volume = 0.5;
-
-btn.addEventListener('click', () => {
-  // 1. SIEMPRE te deja entrar, suene o no
-  entrada.style.display = 'none';
-  
-  // 2. Intenta sonar
-  musica.play().then(()=>{
-    console.log("sonando");
-  }).catch((e)=>{
-    error.innerText = "si no suena, sube el volumen";
-    // igual ya entró, no se queda pegado
-  });
-});
+function entrar(){
+  // 1. PRIMERO te deja entrar, instantaneo
+  document.getElementById('entrada').style.display = 'none';
+  // 2. DESPUES intenta poner musica, si falla no importa
+  var m = document.getElementById('musica');
+  m.volume = 0.5;
+  m.play();
+}
 </script>
 
 </body>
