@@ -11,10 +11,10 @@ body{background:#000;color:#555;font-family:monospace;text-align:center;padding:
   display:flex;flex-direction:column;align-items:center;justify-content:center;
 }
 #entrada button{
-  background:#050505;border:1px solid #333;color:#666;padding:20px 40px;
-  letter-spacing:5px;font-family:monospace;cursor:pointer;font-size:14px
+  background:#0a0a0a;border:1px solid #444;color:#888;padding:20px 50px;
+  letter-spacing:6px;font-family:monospace;cursor:pointer;font-size:16px
 }
-#entrada button:hover{background:#100;color:#900;border-color:#600}
+#entrada button:active{background:#200;color:red}
 h1{font-size:32px;letter-spacing:10px;color:#111;margin-top:30px}
 #perro{width:300px;margin-top:20px;filter:contrast(130%) grayscale(30%);border:1px solid #151515}
 .botones{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:340px;margin:25px auto}
@@ -23,11 +23,11 @@ h1{font-size:32px;letter-spacing:10px;color:#111;margin-top:30px}
 </head>
 <body>
 
-<!-- PANTALLA DE ENTRADA - ESTO HACE QUE SUENE -->
 <div id="entrada">
-  <p style="font-size:10px;color:#222;margin-bottom:20px;letter-spacing:3px">archivo dañado - se requiere audio</p>
-  <button onclick="entrar()">▶ ENTRAR</button>
-  <p style="font-size:8px;color:#111;margin-top:15px">[ usa audifonos ]</p>
+  <p style="font-size:10px;color:#333;margin-bottom:20px;letter-spacing:3px">archivo dañado - se requiere audio</p>
+  <button id="btnEntrar">▶ ENTRAR</button>
+  <p style="font-size:8px;color:#222;margin-top:15px">[ usa audifonos ]</p>
+  <p id="error" style="font-size:9px;color:#400;margin-top:10px"></p>
 </div>
 
 <h1>FERNAN<br>ARCHIVED</h1>
@@ -42,23 +42,28 @@ h1{font-size:32px;letter-spacing:10px;color:#111;margin-top:30px}
   <a href="cuarto2.html">□ CUARTO 2</a>
 </div>
 
-<audio id="musica" loop preload="auto">
-  <source src="terror.mp3" type="audio/mpeg">
-  <source src="https://cdn.pixabay.com/download/audio/2022/10/30/audio_8b64d9387a.mp3" type="audio/mpeg">
-</audio>
+<audio id="musica" loop preload="auto" src="https://cdn.pixabay.com/download/audio/2022/10/30/audio_8b64d9387a.mp3"></audio>
 
 <script>
 const musica = document.getElementById('musica');
 const entrada = document.getElementById('entrada');
-musica.volume = 0.6;
+const btn = document.getElementById('btnEntrar');
+const error = document.getElementById('error');
 
-function entrar(){
+musica.volume = 0.5;
+
+btn.addEventListener('click', () => {
+  // 1. SIEMPRE te deja entrar, suene o no
+  entrada.style.display = 'none';
+  
+  // 2. Intenta sonar
   musica.play().then(()=>{
-    entrada.style.display = 'none';
-  }).catch(e=>{
-    alert("Error: " + e + " - Revisa que subiste terror.mp3");
+    console.log("sonando");
+  }).catch((e)=>{
+    error.innerText = "si no suena, sube el volumen";
+    // igual ya entró, no se queda pegado
   });
-}
+});
 </script>
 
 </body>
