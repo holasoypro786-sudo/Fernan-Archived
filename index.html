@@ -5,45 +5,47 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FERNAN ARCHIVED</title>
 <style>
-body{background:#000;color:#777;font-family:"Courier New",monospace;text-align:center;margin:0;padding:20px;overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:99;background:repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 4px)}
-.logo h1{color:#ddd;letter-spacing:8px;font-size:32px;text-shadow:0 0 10px #222;margin-top:30px}
-.menu{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:600px;margin:30px auto}
-.menu a{background:#080808;border:1px solid #222;color:#666;padding:20px;text-decoration:none;font-size:12px;display:block}
-.menu a:hover{background:#111;color:#fff;border-color:#555}
-img{width:90%;max-width:380px;border-radius:8px;margin:20px auto;display:block}
-.warning{border:1px solid #222;background:#050505;padding:15px;max-width:600px;margin:20px auto;font-size:12px;line-height:1.6}
+body{background:#000;color:#4a4a4a;font-family:"Courier New",monospace;text-align:center;padding:20px;overflow-x:hidden}
+h1{letter-spacing:8px;font-size:28px;color:#222}
+.advertencia{border:1px solid #1a1a1a;padding:15px;margin:20px 0;font-size:11px;color:#555}
+img{width:320px;filter:contrast(130%) grayscale(20%) blur(0.5px);cursor:pointer;animation:parpadeo 4s infinite}
+@keyframes parpadeo{0%,95%,100%{opacity:1}96%{opacity:0.4}97%{opacity:1}98%{opacity:0.2}}
+.botones{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:340px;margin:20px auto}
+.botones a{border:1px solid #222;padding:15px;text-decoration:none;color:#444;font-size:11px}
+.botones a:hover{background:#0a0a0a;color:#700}
 </style>
 </head>
 <body>
 
-<div class="logo">
-<h1>FERNAN ARCHIVED</h1>
-<p>archivo perdido 2014 - 2017</p>
+<h1>FERNAN<br>ARCHIVED</h1>
+<p style="font-size:10px;letter-spacing:3px">archivo perdido 2014 - 2017</p>
+
+<div class="advertencia">
+ADVERTENCIA: mi perro no deja de mirar la esquina desde que vi el video de Fernanfloo. Dice que ve algo...
 </div>
 
-<div class="warning">
-<b>ADVERTENCIA:</b> mi perro no deja de mirar la esquina desde que vi el video de Fernanfloo. Dice que ve algo...
+<a href="cuarto1.html"><img src="Picsart_26-08-29_02-19-48-538.jpg"></a>
+<p style="font-size:9px">[ toca al perro para seguirlo ]</p>
+
+<div class="botones">
+<a href="pasillo.html">□ PASILLO</a>
+<a href="????.html">□ ???</a>
+<a href="cuarto1.html">□ CUARTO 1</a>
+<a href="cuarto2.html">□ CUARTO 2</a>
 </div>
 
-<a href="pasillo.html"><img src="Picsart_26-08-29_02-19-48-538.jpg"></a>
-<p style="font-size:11px;color:#333">[ toca al perro para seguirlo ]</p>
-
-<div class="menu">
-<a href="pasillo.html">▢ PASILLO</a>
-<a href="cara.html">▢ ???</a>
-<a href="cuarto1.html">▢ CUARTO 1</a>
-<a href="cuarto2.html">▢ CUARTO 2</a>
-</div>
-
-<audio id="musica" loop>
-  <source src="https://cdn.pixabay.com/download/audio/2021/09/01/audio_0a1a3f6a6c.mp3" type="audio/mpeg">
+<!-- CANCIÓN ATERRADORA QUE NO SE DETIENE -->
+<audio id="musica" autoplay loop preload="auto" style="display:none">
+  <source src="https://cdn.pixabay.com/download/audio/2022/10/30/audio_8b64d9387a.mp3?filename=dark-ambient-drone-123186.mp3" type="audio/mpeg">
+  <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c1539c.mp3?filename=horror-ambient-10690.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-document.addEventListener('click', function() {
+// La música arranca cuando tocan cualquier cosa (GitHub bloquea el autoplay sin click)
+document.body.addEventListener('click', ()=>{
+  document.getElementById('musica').volume = 0.4;
   document.getElementById('musica').play();
-}, { once: true });
+}, {once:true});
 </script>
 
 </body>
