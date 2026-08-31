@@ -10,6 +10,35 @@ h1{position:fixed;bottom:40px;color:#ff0000;font-family:monospace;text-shadow:0 
 <body>
 <img src="Picsart_26-08-27_00-11-39-099.jpg">
 <h1>NO DEBISTE MIRAR</h1>
-<audio autoplay loop><source src="https://cdn.pixabay.com/download/audio/2022/10/30/audio_8b64d9387a.mp3"></audio>
-<script>setTimeout(()=>location.href="index.html",3500)</script>
+
+<!-- Musica fea de fondo -->
+<audio id="fondo" autoplay loop>
+  <source src="musica.mp3">
+  <source src="https://cdn.pixabay.com/download/audio/2022/10/30/audio_8b64d9387a.mp3">
+</audio>
+
+<!-- GRITO FEO JUMPSCARE -->
+<audio id="grito" autoplay>
+  <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c7533d.mp3" type="audio/mpeg">
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_c8c8a73467.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// volumenes
+const fondo = document.getElementById('fondo');
+const grito = document.getElementById('grito');
+fondo.volume = 0.5;
+grito.volume = 1.0;
+
+// grito al maximo apenas entra
+grito.play().catch(()=>{});
+fondo.play().catch(()=>{});
+
+// vibracion del celular si es Android
+if(navigator.vibrate) navigator.vibrate([200,50,400,50,500]);
+
+// te regresa al inicio
+setTimeout(()=>location.href="index.html",3500)
+</script>
+
 </body></html>
