@@ -36,7 +36,18 @@ img{width:90%;max-width:380px;border-radius:8px;margin:20px auto;display:block}
 <a href="cuarto2.html">▢ CUARTO 2</a>
 </div>
 
-<p style="margin-top:50px;color:#111;font-size:10px">P(ry</p>
+<audio id="musica" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2021/09/01/audio_0a1a3f6a6c.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+document.addEventListener('click', function() {
+  document.getElementById('musica').play();
+}, { once: true });
+</script>
+
+</body>
+</html>
 
 </body>
 </html>
