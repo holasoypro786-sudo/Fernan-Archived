@@ -5,47 +5,60 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FERNAN ARCHIVED</title>
 <style>
-body{background:#000;color:#4a4a4a;font-family:"Courier New",monospace;text-align:center;padding:20px;overflow-x:hidden}
-h1{letter-spacing:8px;font-size:28px;color:#222}
-.advertencia{border:1px solid #1a1a1a;padding:15px;margin:20px 0;font-size:11px;color:#555}
-img{width:320px;filter:contrast(130%) grayscale(20%) blur(0.5px);cursor:pointer;animation:parpadeo 4s infinite}
-@keyframes parpadeo{0%,95%,100%{opacity:1}96%{opacity:0.4}97%{opacity:1}98%{opacity:0.2}}
-.botones{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:340px;margin:20px auto}
-.botones a{border:1px solid #222;padding:15px;text-decoration:none;color:#444;font-size:11px}
-.botones a:hover{background:#0a0a0a;color:#700}
+body{background:#000;color:#555;font-family:monospace;text-align:center;padding:0;margin:0}
+#entrada{
+  position:fixed;inset:0;background:#000;z-index:9999;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+}
+#entrada button{
+  background:#050505;border:1px solid #333;color:#666;padding:20px 40px;
+  letter-spacing:5px;font-family:monospace;cursor:pointer;font-size:14px
+}
+#entrada button:hover{background:#100;color:#900;border-color:#600}
+h1{font-size:32px;letter-spacing:10px;color:#111;margin-top:30px}
+#perro{width:300px;margin-top:20px;filter:contrast(130%) grayscale(30%);border:1px solid #151515}
+.botones{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:340px;margin:25px auto}
+.botones a{border:1px solid #1c1c1c;padding:14px;text-decoration:none;color:#3a3a3a;font-size:11px;background:#050505}
 </style>
 </head>
 <body>
 
-<h1>FERNAN<br>ARCHIVED</h1>
-<p style="font-size:10px;letter-spacing:3px">archivo perdido 2014 - 2017</p>
-
-<div class="advertencia">
-ADVERTENCIA: mi perro no deja de mirar la esquina desde que vi el video de Fernanfloo. Dice que ve algo...
+<!-- PANTALLA DE ENTRADA - ESTO HACE QUE SUENE -->
+<div id="entrada">
+  <p style="font-size:10px;color:#222;margin-bottom:20px;letter-spacing:3px">archivo dañado - se requiere audio</p>
+  <button onclick="entrar()">▶ ENTRAR</button>
+  <p style="font-size:8px;color:#111;margin-top:15px">[ usa audifonos ]</p>
 </div>
 
-<a href="cuarto1.html"><img src="Picsart_26-08-29_02-19-48-538.jpg"></a>
-<p style="font-size:9px">[ toca al perro para seguirlo ]</p>
+<h1>FERNAN<br>ARCHIVED</h1>
+<p style="font-size:9px;letter-spacing:4px;color:#333">archivo perdido 2014-2017</p>
+
+<img id="perro" src="Picsart_26-08-29_02-19-48-538.jpg">
 
 <div class="botones">
-<a href="pasillo.html">□ PASILLO</a>
-<a href="????.html">□ ???</a>
-<a href="cuarto1.html">□ CUARTO 1</a>
-<a href="cuarto2.html">□ CUARTO 2</a>
+  <a href="pasillo.html">□ PASILLO</a>
+  <a href="????.html">□ ???</a>
+  <a href="cuarto1.html">□ CUARTO 1</a>
+  <a href="cuarto2.html">□ CUARTO 2</a>
 </div>
 
-<!-- CANCIÓN ATERRADORA QUE NO SE DETIENE -->
-<audio id="musica" src="https://cdn.pixabay.com/download/audio/2022/10/30/audio_8b64d9387a.mp3" loop preload="auto"></audio>
-  <source src="https://cdn.pixabay.com/download/audio/2022/10/30/audio_8b64d9387a.mp3?filename=dark-ambient-drone-123186.mp3" type="audio/mpeg">
-  <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c1539c.mp3?filename=horror-ambient-10690.mp3" type="audio/mpeg">
+<audio id="musica" loop preload="auto">
+  <source src="terror.mp3" type="audio/mpeg">
+  <source src="https://cdn.pixabay.com/download/audio/2022/10/30/audio_8b64d9387a.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-// La música arranca cuando tocan cualquier cosa (GitHub bloquea el autoplay sin click)
-document.body.addEventListener('click', ()=>{
-  document.getElementById('musica').volume = 0.4;
-  document.getElementById('musica').play();
-}, {once:true});
+const musica = document.getElementById('musica');
+const entrada = document.getElementById('entrada');
+musica.volume = 0.6;
+
+function entrar(){
+  musica.play().then(()=>{
+    entrada.style.display = 'none';
+  }).catch(e=>{
+    alert("Error: " + e + " - Revisa que subiste terror.mp3");
+  });
+}
 </script>
 
 </body>
